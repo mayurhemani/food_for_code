@@ -38,7 +38,7 @@ function condIterPromise(fnCondition, aFnElems, oPayload) {
     return promise;
 }
 
-function fillLimit(aResult) {
+function imit(aLimits) {
     var putter = (x) => {
         return (payload) => {
             let f = someAsyncDataGetter(x);
@@ -50,12 +50,12 @@ function fillLimit(aResult) {
     };
     return condIterPromise(
         (p) => (p.length >= 20),
-        aResult.map((x) => putter(x)),
+        aLimits.map((x) => putter(x)),
         aFilled
     );
 }
 
 var lims = [ 1, 3, 4, 5, 3, 3, 1, 2, 3];
-fillLimit(lims)
+imit(lims)
     .then((x) => console.log(x))
     .catch((err)=>console.log("err" + err));
